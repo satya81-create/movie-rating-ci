@@ -9,7 +9,8 @@ def predict_rating(genre, duration, budget, popularity):
         "Budget_Crore_INR": budget,
         "Popularity_Index": popularity,
     }])
-    return float(model.predict(data)[0])
+    rating = float(model.predict(data)[0])
+    return round(min(max(rating, 0), 10), 2)
 
 if __name__ == "__main__":
     print("Predicted rating:", predict_rating("Drama", 130, 50.0, 75.0))
